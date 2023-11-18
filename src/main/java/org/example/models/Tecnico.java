@@ -1,4 +1,4 @@
-package org.example;
+package org.example.models;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +11,7 @@ public class Tecnico {
         especialidad en los últimos N días
         Quién fue el técnico que más rápido resolvió los incidentes
      */
+    @Getter
     private int id;
     private int incidentesResueltos;
     private String nombre;
