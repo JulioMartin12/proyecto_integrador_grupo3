@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hola julio!");
+        System.out.println("Probando configuración de la BD con JPA");
         String persistenceUnitName = "JPA_PU";
 
         try {
