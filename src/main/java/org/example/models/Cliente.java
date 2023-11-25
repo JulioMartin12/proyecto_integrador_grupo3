@@ -1,15 +1,15 @@
 package org.example.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter @Setter
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Cliente {
     private String CUIT;
-    private String razonSocial;
-    Cliente(String CUIT, String razonSocial){
-        this.CUIT = CUIT;
-        this.razonSocial = razonSocial;
-    }
-    Cliente(){}
+    private String razon,Social;
+    private String email;
+
 }

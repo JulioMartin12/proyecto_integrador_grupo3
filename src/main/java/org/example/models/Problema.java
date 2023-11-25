@@ -1,19 +1,22 @@
 package org.example.models;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
+@Setter
+@Getter
+@NoArgsConstructor
 public class Problema {
-    @Getter
+    @Getter(value = AccessLevel.NONE)
     private int id;
-    @Setter @Getter
     private String nombre;
-    @Setter @Getter
     private String descripcion;
-    @Setter @Getter
     private int tiempoSolucion;
-    @Setter @Getter
     private List<Especialidad> especialidades;
+
+    // TODO: El constructor se verá que datos vamos a necesitar.
 }
