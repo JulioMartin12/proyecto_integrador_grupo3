@@ -4,6 +4,7 @@
 ### Integrantes (hasta la fecha):
 - Julio Martin
 - Leonel Cortés
+- Leonardo Docimo (ex integrante grupo 08)
 ## Estado actual: Primera entrega
 
 ## Diagrama:
