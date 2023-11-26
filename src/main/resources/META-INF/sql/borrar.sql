@@ -1,0 +1,12 @@
+DROP TABLE if exists problemas;
+DROP TABLE if exists incidentes;
+DROP TABLE if exists servicios_x_clientes;
+DROP TABLE if exists clientes;
+DROP TABLE if exists servicios;
+DROP TABLE if exists especialidades_x_tecnicos;
+DROP TABLE if exists especialidades_x_tipos_problemas;
+DROP TABLE if exists especialidades;
+DROP TABLE if exists tecnicos_estimacion_tipos_problemas;
+DROP TABLE if exists tipos_problemas;
+DROP TABLE if exists tecnicos;
+DROP TABLE if exists tipos_estados;

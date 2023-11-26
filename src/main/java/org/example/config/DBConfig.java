@@ -11,12 +11,13 @@ import  java.sql.Statement;
 public class DBConfig {
 
     static EntityManagerFactory factory = null;
-
+    public static void generateSchema(){
+        Persistence.generateSchema("JPA_PU",null);
+    }
     public static EntityManager getEntityManager(){
         if(factory == null)
             factory = Persistence.createEntityManagerFactory("JPA_PU");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
+        return factory.createEntityManager();
     }
 
 

@@ -1,8 +1,15 @@
 package org.example.models;
+import lombok.*;
+import javax.persistence.*;
 
-public enum Especialidad {
-    LINUX,
-    WINDOWS,
-    MAC,
-    REDES // TODO: Agregar especialidades ( no se me ocurrieron mas )
+
+@AllArgsConstructor @RequiredArgsConstructor @NoArgsConstructor(force = true)
+@Setter @Getter @ToString
+@Entity @Table(name = "especialidades")
+public class Especialidad {
+    @Id
+    private int id;
+    @NonNull @Column(name = "nombre", length = 45)
+    private String nombre;
+    private String descripcion;
 }
