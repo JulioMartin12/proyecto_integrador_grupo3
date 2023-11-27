@@ -8,15 +8,14 @@
         <class>org.example.models.Cliente</class>
         <!-- Otras configuraciones como el proveedor de persistencia, la URL de la base de datos, etc. -->
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/soporte_operativo"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="7$27CuPg)~;fy8m"/>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <!-- Configuracion de scripts de generacion de la base de datos -->
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
-            <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/sql/crear.sql"/>
-            <property name="javax.persistence.schema-generation.drop-script-source" value="META-INF/sql/borrar.sql"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/soporte_operativo"/>
+            <property name="hibernate.connection.user" value="root"/>
+            <property name="hibernate.connection.password" value="password"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
             <!-- Otras propiedades de Hibernate si es necesario -->
         </properties>
     </persistence-unit>
