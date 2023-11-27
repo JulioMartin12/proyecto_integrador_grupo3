@@ -1,4 +1,6 @@
+import org.example.DAO.TecnicoDAO;
 import org.example.config.DBConfig;
+import org.example.controllers.TecnicoController;
 import org.example.models.Cliente;
 import org.example.models.Tecnico;
 
@@ -6,28 +8,15 @@ import javax.persistence.EntityManager;
 
 public class TecnicoTest {
     public static void main(String[] args) {
-        System.out.println("Probando configuración de la BD con JPA");
+        TecnicoController tecnicoController = new TecnicoController();
 
-        try {
-            EntityManager em = DBConfig.getEntityManager();
-            System.out.println("Conexión exitosa a la base de datos");
+        Tecnico tecnico = new Tecnico();
+        tecnico.setNombre("jorge");
+        tecnico.setApellido("tuli");
 
-            // Codigo a testear
-
-            Tecnico tecnico = new Tecnico();
-            tecnico.setNombre("jorge");
-            tecnico.setApellido("tete");
-            em.getTransaction().begin();
-            if (tecnico != null){
-                em.persist(tecnico);
-            }
-            em.getTransaction().commit();
+        tecnicoController.create(tecnico);
 
 
-        } catch (Exception e) {
-            // Capturar excepciones en caso de que la conexión falle
-            e.printStackTrace();
-            System.out.println("Fallo en la conexión a la base de datos");
-        }
     }
+
 }

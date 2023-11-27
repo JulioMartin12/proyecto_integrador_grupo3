@@ -2,13 +2,14 @@ package org.example.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "TECNICO")
-public class Tecnico {
+public class Tecnico implements Serializable {
     /* TODO El sistema debe dar la posibilidad de informar:
         Quién fue el técnico con más incidentes resueltos en los últimos N días
         Quién fue el técnico con más incidentes resueltos de una determinada

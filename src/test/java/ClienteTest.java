@@ -8,7 +8,7 @@ public class ClienteTest {
         System.out.println("Probando configuración de la BD con JPA");
 
         try {
-            DBConfig.generateSchema(); // Genero las tablas de la DB
+            //DBConfig.generateSchema();// // Genero las tablas de la DB
             EntityManager em = DBConfig.getEntityManager();
             System.out.println("Conexión exitosa a la base de datos");
             // Codigo a testear
