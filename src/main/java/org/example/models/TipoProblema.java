@@ -21,7 +21,7 @@ public class TipoProblema implements Serializable {
     @ManyToMany
     @JoinTable(
             name = "ESPECIALIDADES_TIPOS_PROBLEMAS",
-            joinColumns = @JoinColumn(name = "ID_TIPO_PROBLEMA", foreignKey=@ForeignKey(name = "ID_TIPO_PROBLEMA_ESPECIALIDADES_TECNICOS")),
-            inverseJoinColumns = @JoinColumn(name = "ID_ESPECIALIDAD",foreignKey=@ForeignKey(name = "ID_ESPECIALIDAD_ESPECIALIDADES_TECNICOS")))
+            joinColumns = @JoinColumn(name = "ID_TIPO_PROBLEMA", foreignKey=@ForeignKey(name = "ID_TIPO_PROBLEMA_ESPECIALIDADES_TIPOS_PROBLEMAS")),
+            inverseJoinColumns = @JoinColumn(name = "ID_ESPECIALIDAD",foreignKey=@ForeignKey(name = "ID_ESPECIALIDAD_ESPECIALIDADES_TIPOS_PROBLEMAS")))
     private Set<Especialidad> especialidades = new HashSet<>();
 }
