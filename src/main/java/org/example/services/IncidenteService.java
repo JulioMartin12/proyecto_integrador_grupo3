@@ -9,6 +9,7 @@ public class IncidenteService {
 
     private IncidenteController incidenteController = new IncidenteController();
 
+
     public void creat (Incidente incidente){
         this.incidenteController.create(incidente);
     }
