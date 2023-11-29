@@ -3,6 +3,8 @@ package org.example.controllers;
 import org.example.DAO.TecnicoDAO;
 import org.example.models.Tecnico;
 
+import java.util.List;
+
 public class TecnicoController {
     private TecnicoDAO tecnicoDAO;
 
@@ -18,6 +20,10 @@ public class TecnicoController {
 
     public void delete(Tecnico tecnico) {
         tecnicoDAO.delete(tecnico);
+    }
+
+    public List<Tecnico> findAll(){
+       return this.tecnicoDAO.findAll();
     }
 
 

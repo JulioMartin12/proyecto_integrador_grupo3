@@ -28,5 +28,10 @@ public class Tecnico implements Serializable {
     @Transient
     private List<Especialidad> especialidades;
 
+    public Tecnico(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     // TODO: El constructor se verá que datos vamos a necesitar.
 }

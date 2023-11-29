@@ -21,4 +21,8 @@ public class TipoProblema implements Serializable {
     @Column(name = "tiempo_maximo_resolucion", nullable = false) @NonNull
     private int tiempoMaxResolucion;
 
+//    public TipoProblema(String nombre, int tiempoMaxResolucion) {
+//        this.nombre = nombre;
+//        this.tiempoMaxResolucion = tiempoMaxResolucion;
+//    }
 }

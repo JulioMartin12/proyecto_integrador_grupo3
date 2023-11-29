@@ -10,11 +10,8 @@ public class TecnicoTest {
     public static void main(String[] args) {
         TecnicoController tecnicoController = new TecnicoController();
 
-        Tecnico tecnico = new Tecnico();
-        tecnico.setNombre("jorge");
-        tecnico.setApellido("tuli");
-
-        tecnicoController.create(tecnico);
+        Tecnico tecnico = new Tecnico("jorge","tuli");
+          tecnicoController.create(tecnico);
 
 
     }
