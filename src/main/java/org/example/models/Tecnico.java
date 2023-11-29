@@ -8,7 +8,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-@Table(name = "TECNICO")
+@Table(name = "TECNICOS")
 public class Tecnico implements Serializable {
     /* TODO El sistema debe dar la posibilidad de informar:
         Quién fue el técnico con más incidentes resueltos en los últimos N días
