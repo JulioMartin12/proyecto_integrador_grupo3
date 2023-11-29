@@ -3,18 +3,24 @@ package org.example.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "SERVICIO")
+@Table(name = "SERVICIOS")
 public class Servicio {
-    @Getter(value = AccessLevel.NONE)
-
+    @Setter(value = AccessLevel.NONE) @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(length = 45, nullable = false)
     private String nombre;
+    private String descripcion;
+    @ManyToMany(mappedBy = "servicios")
+    Set<Cliente> clientes = new HashSet<>();
+    public Servicio(String nombre){
+        this.nombre = nombre;
+    }
 
 }

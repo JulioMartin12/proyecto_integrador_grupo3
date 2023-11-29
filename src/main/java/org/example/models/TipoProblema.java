@@ -5,24 +5,14 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@AllArgsConstructor
-@RequiredArgsConstructor
-@NoArgsConstructor(force = true)
-@Setter
-@Getter
-@ToString
+@Data @AllArgsConstructor
 @Entity
-@Table(name = "tipos_problemas")
+@Table(name = "TIPOS_PROBLEMAS")
 public class TipoProblema implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "nombre", nullable = false, length = 45) @NonNull
+    @Column(name = "nombre", nullable = false, length = 45)
     private String nombre;
-    @Column(name = "tiempo_maximo_resolucion", nullable = false) @NonNull
+    @Column(name = "tiempo_maximo_resolucion", nullable = false)
     private int tiempoMaxResolucion;
-
-//    public TipoProblema(String nombre, int tiempoMaxResolucion) {
-//        this.nombre = nombre;
-//        this.tiempoMaxResolucion = tiempoMaxResolucion;
-//    }
 }
