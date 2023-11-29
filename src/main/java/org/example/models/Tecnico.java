@@ -3,7 +3,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor @AllArgsConstructor
@@ -16,7 +19,7 @@ public class Tecnico implements Serializable {
         especialidad en los últimos N días
         Quién fue el técnico que más rápido resolvió los incidentes
      */
-    @Getter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Transient
@@ -25,9 +28,14 @@ public class Tecnico implements Serializable {
     private String nombre;
     @Column(length = 45, nullable = false)
     private String apellido;
-    @Transient
-    private List<Especialidad> especialidades;
-
+    @ManyToMany
+    @JoinTable(
+            name = "ESPECIALIDADES_TECNICOS",
+            joinColumns = @JoinColumn(name = "ID_TECNICO", foreignKey=@ForeignKey(name = "ID_TECNICO_ESPECIALIDADES_TECNICOS")),
+            inverseJoinColumns = @JoinColumn(name = "ID_ESPECIALIDAD",foreignKey=@ForeignKey(name = "ID_ESPECIALIDAD_ESPECIALIDADES_TECNICOS")))
+    private Set<Especialidad> especialidades = new HashSet<>();
+    // TODO: DECIDIR COMO MAPEAR LAS ESTIMACIONES DE TIEMPO POR TIPO DE PROBLEMA
+    // private TIPO_A_DECIDIR estimaciones = new TIPO_A_DECIDIR;
     public Tecnico(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;

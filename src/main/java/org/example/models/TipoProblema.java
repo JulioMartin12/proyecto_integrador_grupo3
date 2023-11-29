@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data @AllArgsConstructor
 @Entity
@@ -15,4 +17,11 @@ public class TipoProblema implements Serializable {
     private String nombre;
     @Column(name = "tiempo_maximo_resolucion", nullable = false)
     private int tiempoMaxResolucion;
+    @Setter(value = AccessLevel.NONE)
+    @ManyToMany
+    @JoinTable(
+            name = "ESPECIALIDADES_TIPOS_PROBLEMAS",
+            joinColumns = @JoinColumn(name = "ID_TIPO_PROBLEMA", foreignKey=@ForeignKey(name = "ID_TIPO_PROBLEMA_ESPECIALIDADES_TECNICOS")),
+            inverseJoinColumns = @JoinColumn(name = "ID_ESPECIALIDAD",foreignKey=@ForeignKey(name = "ID_ESPECIALIDAD_ESPECIALIDADES_TECNICOS")))
+    private Set<Especialidad> especialidades = new HashSet<>();
 }

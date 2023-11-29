@@ -2,6 +2,8 @@ package org.example.models;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -15,6 +17,12 @@ public class Especialidad implements Serializable {
     private String nombre;
     @Column(name = "descripcion",length = 200)
     private String descripcion;
+    @Setter(value = AccessLevel.NONE)
+    @ManyToMany(mappedBy = "especialidades")
+    Set<Tecnico> tecnicos = new HashSet<>();
+    @Setter(value = AccessLevel.NONE)
+    @ManyToMany(mappedBy = "especialidades")
+    Set<TipoProblema> tiposProblemas = new HashSet<>();
     public Especialidad(String nombre){
         this.nombre = nombre;
     }
