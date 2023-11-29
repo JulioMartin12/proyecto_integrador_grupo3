@@ -3,7 +3,10 @@ package org.example.models;
 import lombok.*;
 
 import javax.persistence.*;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f54e0815404dcc1ead7e56bb53499464d6f4ad4e
 import java.io.Serializable;
 import java.util.List;
 
