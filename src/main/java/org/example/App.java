@@ -28,6 +28,7 @@ public class App {
         IncidenteService incidenteService = new IncidenteService();
         Incidente incidente = new Incidente(Estado.SINREVISAR,LocalDateTime.now());
         incidenteService.creat(incidente);
+        System.out.println("Todos los Incidentes son: "+incidenteService.findAll());
     }
 
     public static  void oldMain(){
