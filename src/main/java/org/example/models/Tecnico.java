@@ -4,12 +4,10 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "TECNICOS")
 public class Tecnico implements Serializable {
@@ -19,11 +17,10 @@ public class Tecnico implements Serializable {
         especialidad en los últimos N días
         Quién fue el técnico que más rápido resolvió los incidentes
      */
-    @Setter(value = AccessLevel.NONE)
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @Setter(AccessLevel.PRIVATE)
     private int id;
-    @Transient
-    private int incidentesResueltos;
     @Column(length = 45, nullable = false)
     private String nombre;
     @Column(length = 45, nullable = false)
@@ -31,8 +28,8 @@ public class Tecnico implements Serializable {
     @ManyToMany
     @JoinTable(
             name = "ESPECIALIDADES_TECNICOS",
-            joinColumns = @JoinColumn(name = "ID_TECNICO", foreignKey=@ForeignKey(name = "ID_TECNICO_ESPECIALIDADES_TECNICOS")),
-            inverseJoinColumns = @JoinColumn(name = "ID_ESPECIALIDAD",foreignKey=@ForeignKey(name = "ID_ESPECIALIDAD_ESPECIALIDADES_TECNICOS")))
+            joinColumns = @JoinColumn(name = "id_tecnico", foreignKey=@ForeignKey(name = "id_tecnico_especialidades_tecnicos")),
+            inverseJoinColumns = @JoinColumn(name = "id_especialidad",foreignKey=@ForeignKey(name = "id_especialidad_especialidades_tecnicos")))
     private Set<Especialidad> especialidades = new HashSet<>();
     // TODO: DECIDIR COMO MAPEAR LAS ESTIMACIONES DE TIEMPO POR TIPO DE PROBLEMA
     // private TIPO_A_DECIDIR estimaciones = new TIPO_A_DECIDIR;
@@ -40,6 +37,8 @@ public class Tecnico implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
     }
-
-    // TODO: El constructor se verá que datos vamos a necesitar.
+    public void addEspecialidad(Especialidad especialidad){
+        especialidades.add(especialidad);
+        especialidad.getTecnicos().add(this);
+    }
 }

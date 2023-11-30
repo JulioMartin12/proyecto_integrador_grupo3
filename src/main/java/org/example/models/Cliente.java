@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Data @NoArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity @Table(name = "CLIENTES")
 public class Cliente implements Serializable {

@@ -1,26 +1,29 @@
 package org.example.models;
 
-import com.sun.xml.bind.v2.TODO;
 import lombok.*;
 
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
-@Data
+import java.util.HashSet;
+import java.util.Set;
+
+@Data @NoArgsConstructor @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name="INCIDENTES")
 public class Incidente  implements Serializable {
-    @Id
+    @Id @EqualsAndHashCode.Include
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id_incidente")
-    @Setter(value = AccessLevel.NONE)
+    @Setter(AccessLevel.PRIVATE)
     private int id;
+    @Enumerated(EnumType.STRING)
     @Column(name ="estado",nullable = false)
     private Estado estado;
-    /*@Column(name = "problema")
-    private Problema problema;*/
+    @OneToMany(mappedBy = "incidente")
+    private Set<Problema> problemas = new HashSet<>();
     @Column(name = "fechaDeInicio", nullable = false)
     private LocalDateTime fechaDeInicio;
     @Column(name = "fechaResolucion")
@@ -30,6 +33,4 @@ public class Incidente  implements Serializable {
         this.estado = estado;
         this.fechaDeInicio = fechaDeInicio;
     }
-
-    // TODO: El constructor se verá que datos vamos a necesitar.
 }

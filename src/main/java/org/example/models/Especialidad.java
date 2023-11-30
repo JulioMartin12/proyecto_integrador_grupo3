@@ -6,21 +6,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity @Table(name = "ESPECIALIDADES")
 public class Especialidad implements Serializable {
     @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.PRIVATE)
     private int id;
     @Column(name = "nombre", length = 45, nullable = false)
     private String nombre;
     @Column(name = "descripcion",length = 200)
     private String descripcion;
-    @Setter(value = AccessLevel.NONE)
     @ManyToMany(mappedBy = "especialidades")
     Set<Tecnico> tecnicos = new HashSet<>();
-    @Setter(value = AccessLevel.NONE)
     @ManyToMany(mappedBy = "especialidades")
     Set<TipoProblema> tiposProblemas = new HashSet<>();
     public Especialidad(String nombre){
