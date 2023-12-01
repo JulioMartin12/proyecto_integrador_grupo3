@@ -20,7 +20,18 @@ public class Servicio implements Serializable {
     private String nombre;
     private String descripcion;
     @ManyToMany(mappedBy = "servicios")
+    @Setter(AccessLevel.NONE)
     Set<Cliente> clientes = new HashSet<>();
+    @OneToMany(mappedBy = "servicio")
+    @Setter(AccessLevel.NONE)
+    private Set<Incidente> incidentes = new HashSet<>();
+    public void addCliente(Cliente cliente){
+        cliente.addServicio(this);
+    }
+    public void addIncidente(Incidente incidente){
+        incidentes.add(incidente);
+        incidente.setServicio(this);
+    }
     public Servicio(String nombre){
         this.nombre = nombre;
     }

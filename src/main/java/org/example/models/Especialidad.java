@@ -19,9 +19,15 @@ public class Especialidad implements Serializable {
     @Column(name = "descripcion",length = 200)
     private String descripcion;
     @ManyToMany(mappedBy = "especialidades")
+    @Setter(AccessLevel.NONE)
     Set<Tecnico> tecnicos = new HashSet<>();
     @ManyToMany(mappedBy = "especialidades")
+    @Setter(AccessLevel.NONE)
     Set<TipoProblema> tiposProblemas = new HashSet<>();
+    public void addTipoProblema(TipoProblema tipoProblema){
+        tiposProblemas.add(tipoProblema);
+        tipoProblema.getEspecialidades().add(this);
+    }
     public Especialidad(String nombre){
         this.nombre = nombre;
     }

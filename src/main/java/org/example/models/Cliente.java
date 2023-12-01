@@ -21,9 +21,21 @@ public class Cliente implements Serializable {
     @ManyToMany
     @JoinTable(
             name = "SERVICIOS_CLIENTES",
-            joinColumns = @JoinColumn(name = "CUIT_CLIENTE", foreignKey=@ForeignKey(name = "CUIT_CLIENTE_SERVICIOS_CLIENTES")),
-            inverseJoinColumns = @JoinColumn(name = "ID_SERVICIO",foreignKey=@ForeignKey(name = "ID_SERVICIO_SERVICIOS_CLIENTES")))
+            joinColumns = @JoinColumn(name = "cuit_cliente", foreignKey=@ForeignKey(name = "cuit_cliente_servicios_clientes")),
+            inverseJoinColumns = @JoinColumn(name = "id_servicio",foreignKey=@ForeignKey(name = "id_servicio_servicios_clientes")))
+    @Setter(AccessLevel.NONE)
     private Set<Servicio> servicios = new HashSet<>();
+    @OneToMany(mappedBy = "cliente")
+    @Setter(AccessLevel.NONE)
+    private Set<Incidente> incidentes = new HashSet<>();
+    public void addServicio(Servicio servicio){
+        servicios.add(servicio);
+        servicio.getClientes().add(this);
+    }
+    public void addIncidente(Incidente incidente){
+        incidentes.add(incidente);
+        incidente.setCliente(this);
+    }
     public Cliente(String cuit, String razonSocial){
         this.cuit = cuit;
         this.razonSocial = razonSocial;

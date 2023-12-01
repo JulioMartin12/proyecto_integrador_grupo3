@@ -16,7 +16,7 @@ public class TipoProblema implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
     private int id;
-    @Column(name = "nombre", nullable = false, length = 45)
+    @Column(name = "nombre", nullable = false, length = 45, unique = true)
     private String nombre;
     @Column(name = "tiempo_maximo_resolucion", nullable = false)
     private int tiempoMaxResolucion;
@@ -25,5 +25,20 @@ public class TipoProblema implements Serializable {
             name = "ESPECIALIDADES_TIPOS_PROBLEMAS",
             joinColumns = @JoinColumn(name = "id_tipo_problema", foreignKey=@ForeignKey(name = "id_tipo_problema_especialidades_tipos_problemas")),
             inverseJoinColumns = @JoinColumn(name = "id_especialidad",foreignKey=@ForeignKey(name = "id_especialidad_especialidades_tipos_problemas")))
+    @Setter(AccessLevel.NONE)
     private Set<Especialidad> especialidades = new HashSet<>();
+    @OneToMany(mappedBy = "tipoProblema")
+    @Setter(AccessLevel.NONE)
+    private Set<TecnicoEstimacion> estimaciones = new HashSet<>();
+    @OneToMany(mappedBy = "tipoProblema")
+    @Setter(AccessLevel.NONE)
+    private Set<Problema> problemas = new HashSet<>();
+    public void addEspecialidad(Especialidad especialidad){
+        especialidades.add(especialidad);
+        especialidad.getTiposProblemas().add(this);
+    }
+    public void addEstimacion(TecnicoEstimacion estimacion, Tecnico tecnico){
+        tecnico.addEstimacion(estimacion, this);
+    }
+
 }

@@ -30,15 +30,30 @@ public class Tecnico implements Serializable {
             name = "ESPECIALIDADES_TECNICOS",
             joinColumns = @JoinColumn(name = "id_tecnico", foreignKey=@ForeignKey(name = "id_tecnico_especialidades_tecnicos")),
             inverseJoinColumns = @JoinColumn(name = "id_especialidad",foreignKey=@ForeignKey(name = "id_especialidad_especialidades_tecnicos")))
-    private Set<Especialidad> especialidades = new HashSet<>();
-    // TODO: DECIDIR COMO MAPEAR LAS ESTIMACIONES DE TIEMPO POR TIPO DE PROBLEMA
-    // private TIPO_A_DECIDIR estimaciones = new TIPO_A_DECIDIR;
-    public Tecnico(String nombre, String apellido) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    @Setter(AccessLevel.NONE)
+    private final Set<Especialidad> especialidades = new HashSet<>();
+    @OneToMany(mappedBy = "tecnico")
+    @Setter(AccessLevel.NONE)
+    private Set<TecnicoEstimacion> estimaciones = new HashSet<>();
+    @OneToMany(mappedBy = "tecnico")
+    @Setter(AccessLevel.NONE)
+    private Set<Incidente> incidentes = new HashSet<>();
+    public void addEstimacion(TecnicoEstimacion estimacion, TipoProblema tipoProblema){
+        estimaciones.add(estimacion);
+        tipoProblema.getEstimaciones().add(estimacion);
+        estimacion.setTipoProblema(tipoProblema);
+        estimacion.setTecnico(this);
+    }
+    public void addIncidente(Incidente incidente){
+        incidentes.add(incidente);
+        incidente.setTecnico(this);
     }
     public void addEspecialidad(Especialidad especialidad){
         especialidades.add(especialidad);
         especialidad.getTecnicos().add(this);
+    }
+    public Tecnico(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 }

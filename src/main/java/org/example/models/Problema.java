@@ -18,10 +18,20 @@ public class Problema implements Serializable {
     private String nombre;
     @Column(name = "descripcion",length = 200)
     private String descripcion;
+    @Column(nullable = false)
+    private int horas_extra = 0;
     @ManyToOne
-    @JoinColumn(name = "incidente_id", nullable = false, foreignKey = @ForeignKey(name = "id_incidente_problemas"))
+    @JoinColumn(name = "id_incidente", nullable = false, foreignKey = @ForeignKey(name = "id_incidente_problemas"))
     private Incidente incidente;
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_problema", nullable = false, foreignKey = @ForeignKey(name = "id_tipo_problema_problemas"))
+    private TipoProblema tipoProblema;
     public Problema(String nombre){
         this.nombre = nombre;
+    }
+
+    public void setTipoProblema(TipoProblema tipoProblema) {
+        this.tipoProblema = tipoProblema;
+        tipoProblema.getProblemas().add(this);
     }
 }
