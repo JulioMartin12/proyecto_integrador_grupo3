@@ -28,6 +28,10 @@ public class Especialidad implements Serializable {
         tiposProblemas.add(tipoProblema);
         tipoProblema.getEspecialidades().add(this);
     }
+    public void removeTipoProblema(TipoProblema tipoProblema){
+        tiposProblemas.remove(tipoProblema);
+        tipoProblema.getEspecialidades().remove(this);
+    }
     public Especialidad(String nombre){
         this.nombre = nombre;
     }

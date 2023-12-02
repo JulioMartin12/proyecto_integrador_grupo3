@@ -37,8 +37,11 @@ public class TipoProblema implements Serializable {
         especialidades.add(especialidad);
         especialidad.getTiposProblemas().add(this);
     }
-    public void addEstimacion(TecnicoEstimacion estimacion, Tecnico tecnico){
-        tecnico.addEstimacion(estimacion, this);
+    public void addEstimacion(TecnicoEstimacion estimacion){
+        estimacion.getTecnico().addEstimacion(estimacion);
+    }
+    public void removeEstimacion(TecnicoEstimacion estimacion){
+        estimacion.getTecnico().removeEstimacion(estimacion);
     }
 
 }

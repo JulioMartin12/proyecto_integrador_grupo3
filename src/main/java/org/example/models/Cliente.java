@@ -36,6 +36,14 @@ public class Cliente implements Serializable {
         incidentes.add(incidente);
         incidente.setCliente(this);
     }
+    public void removeServicio(Servicio servicio){
+        servicios.remove(servicio);
+        servicio.getClientes().remove(this);
+    }
+    public void removeIncidente(Incidente incidente){
+        incidentes.remove(incidente);
+        incidente.setCliente(null);
+    }
     public Cliente(String cuit, String razonSocial){
         this.cuit = cuit;
         this.razonSocial = razonSocial;

@@ -47,4 +47,8 @@ public class Incidente  implements Serializable {
         problemas.add(problema);
         problema.setIncidente(this);
     }
+    public void removeProblema(Problema problema){
+        problemas.remove(problema);
+        problema.setIncidente(null);
+    }
 }

@@ -38,11 +38,9 @@ public class Tecnico implements Serializable {
     @OneToMany(mappedBy = "tecnico")
     @Setter(AccessLevel.NONE)
     private Set<Incidente> incidentes = new HashSet<>();
-    public void addEstimacion(TecnicoEstimacion estimacion, TipoProblema tipoProblema){
+    public void addEstimacion(TecnicoEstimacion estimacion){
         estimaciones.add(estimacion);
-        tipoProblema.getEstimaciones().add(estimacion);
-        estimacion.setTipoProblema(tipoProblema);
-        estimacion.setTecnico(this);
+        estimacion.getTipoProblema().getEstimaciones().add(estimacion);
     }
     public void addIncidente(Incidente incidente){
         incidentes.add(incidente);
@@ -51,6 +49,12 @@ public class Tecnico implements Serializable {
     public void addEspecialidad(Especialidad especialidad){
         especialidades.add(especialidad);
         especialidad.getTecnicos().add(this);
+    }
+    public void removeEstimacion(TecnicoEstimacion estimacion){
+        estimaciones.remove(estimacion);
+        estimacion.getTipoProblema().getEstimaciones().remove(estimacion);
+        estimacion.setTipoProblema(null);
+        estimacion.setTecnico(null);
     }
     public Tecnico(String nombre, String apellido) {
         this.nombre = nombre;

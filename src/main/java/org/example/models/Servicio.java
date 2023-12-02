@@ -32,6 +32,13 @@ public class Servicio implements Serializable {
         incidentes.add(incidente);
         incidente.setServicio(this);
     }
+    public void removeCliente(Cliente cliente){
+        cliente.removeServicio(this);
+    }
+    public void removeIncidente(Incidente incidente){
+        incidentes.remove(incidente);
+        incidente.setServicio(null);
+    }
     public Servicio(String nombre){
         this.nombre = nombre;
     }

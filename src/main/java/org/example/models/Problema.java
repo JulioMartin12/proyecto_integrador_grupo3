@@ -31,7 +31,15 @@ public class Problema implements Serializable {
     }
 
     public void setTipoProblema(TipoProblema tipoProblema) {
-        this.tipoProblema = tipoProblema;
+        if (tipoProblema == null){
+            if (this.tipoProblema == null){
+                return;
+            }
+            this.tipoProblema.getProblemas().remove(this);
+            this.tipoProblema = null;
+            return;
+        }
         tipoProblema.getProblemas().add(this);
+        this.tipoProblema = tipoProblema;
     }
 }
