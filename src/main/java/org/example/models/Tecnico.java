@@ -21,10 +21,13 @@ public class Tecnico implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
     private int id;
+
     @Column(length = 45, nullable = false)
     private String nombre;
+
     @Column(length = 45, nullable = false)
     private String apellido;
+
     @ManyToMany
     @JoinTable(
             name = "ESPECIALIDADES_TECNICOS",
@@ -32,12 +35,15 @@ public class Tecnico implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_especialidad",foreignKey=@ForeignKey(name = "id_especialidad_especialidades_tecnicos")))
     @Setter(AccessLevel.NONE)
     private final Set<Especialidad> especialidades = new HashSet<>();
+
     @OneToMany(mappedBy = "tecnico")
     @Setter(AccessLevel.NONE)
     private Set<TecnicoEstimacion> estimaciones = new HashSet<>();
+
     @OneToMany(mappedBy = "tecnico")
     @Setter(AccessLevel.NONE)
     private Set<Incidente> incidentes = new HashSet<>();
+
     public void addEstimacion(TecnicoEstimacion estimacion){
         estimaciones.add(estimacion);
         estimacion.getTipoProblema().getEstimaciones().add(estimacion);
