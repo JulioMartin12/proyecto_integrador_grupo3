@@ -1,3 +1,5 @@
+package models;
+
 import org.example.config.DBConfig;
 import org.example.models.Cliente;
 import org.example.models.Servicio;

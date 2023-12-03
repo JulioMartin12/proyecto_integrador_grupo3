@@ -4,23 +4,22 @@ import org.example.config.DBConfig;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import java.io.Serializable;
 import java.util.List;
 
-public abstract class AbstractJpaDAO< T extends Serializable> {
-    private Class< T > clazz;
+public abstract class AbstractJpaDAO< T, tipoID> {
+    private Class< T > clase;
 
     EntityManager entityManager = DBConfig.getEntityManager();
 
-    public final void setClazz( Class< T > clazzToSet ){
-        this.clazz = clazzToSet;
+    public final void setClase( Class< T > clase ){
+        this.clase = clase;
     }
 
-    public T findOne( int id ){
-        return entityManager.find( clazz, id );
+    public T findOne( tipoID id ){
+        return entityManager.find( clase, id );
     }
     public List< T > findAll(){
-        return entityManager.createQuery( "from " + clazz.getName() )
+        return entityManager.createQuery( "from " + clase.getName() )
                 .getResultList();
     }
 

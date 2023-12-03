@@ -2,8 +2,8 @@ package org.example.DAO;
 
 import org.example.models.Problema;
 
-public class ProblemaDAO extends AbstractJpaDAO<Problema>{
+public class ProblemaDAO extends AbstractJpaDAO<Problema, Integer>{
     public ProblemaDAO(){
-        setClazz(Problema.class);
+        setClase(Problema.class);
     }
 }

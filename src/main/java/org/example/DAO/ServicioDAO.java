@@ -2,10 +2,10 @@ package org.example.DAO;
 
 import org.example.models.Servicio;
 
-public class ServicioDAO extends AbstractJpaDAO<Servicio>{
+public class ServicioDAO extends AbstractJpaDAO<Servicio, Integer>{
 
     public ServicioDAO(){
-        setClazz(Servicio.class);
+        setClase(Servicio.class);
     }
 
 }

@@ -1,8 +1,5 @@
-import org.example.config.DBConfig;
-import org.example.models.Servicio;
-import org.example.models.Tecnico;
+package models;
 
-import javax.persistence.EntityManager;
 
 public class ServicioTest {
     public static void main(String[] args) {

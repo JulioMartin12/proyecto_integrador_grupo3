@@ -1,7 +1,5 @@
-import org.example.controllers.EspecialidadController;
-import org.example.controllers.ProblemaController;
-import org.example.models.Especialidad;
-import org.example.models.Problema;
+package models;
+
 
 public class EspecialidadTest {
     public static void main(String[] args) {

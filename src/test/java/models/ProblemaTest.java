@@ -1,7 +1,5 @@
-import org.example.controllers.ProblemaController;
-import org.example.controllers.TecnicoController;
-import org.example.models.Problema;
-import org.example.models.Tecnico;
+package models;
+
 
 public class ProblemaTest {
     public static void main(String[] args) {

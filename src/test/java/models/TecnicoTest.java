@@ -1,10 +1,7 @@
-import org.example.DAO.TecnicoDAO;
-import org.example.config.DBConfig;
-import org.example.controllers.TecnicoController;
-import org.example.models.Cliente;
-import org.example.models.Tecnico;
+package models;
 
-import javax.persistence.EntityManager;
+import org.example.controllers.TecnicoController;
+import org.example.models.Tecnico;
 
 public class TecnicoTest {
     public static void main(String[] args) {
