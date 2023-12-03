@@ -4,6 +4,9 @@ import org.example.DAO.EspecialidadDAO;
 import org.example.DAO.ProblemaDAO;
 import org.example.models.Especialidad;
 import org.example.models.Problema;
+import org.example.models.Tecnico;
+
+import java.util.List;
 
 public class EspecialidadController {
 
@@ -23,5 +26,8 @@ public class EspecialidadController {
         especialidadDAO.delete(especialidad);
     }
 
+    public List<Especialidad> findAll(){
+        return this.especialidadDAO.findAll();
 
-}
+
+}}

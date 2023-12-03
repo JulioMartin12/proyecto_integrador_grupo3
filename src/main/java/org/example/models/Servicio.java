@@ -16,7 +16,7 @@ public class Servicio implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
     private int id;
-    @Column(length = 45, nullable = false)
+    @Column(name= "nombre",length = 45, nullable = false)
     private String nombre;
     private String descripcion;
     @ManyToMany(mappedBy = "servicios")
