@@ -16,15 +16,26 @@ public class Servicio implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
     private int id;
-    @Column(name= "nombre",length = 45, nullable = false)
+
+    @Column(name= "nombre",length = 100, nullable = false)
     private String nombre;
+
+    @Column(name= "descripcion",length = 345, nullable = false)
     private String descripcion;
+
     @ManyToMany(mappedBy = "servicios")
     @Setter(AccessLevel.NONE)
-    Set<Cliente> clientes = new HashSet<>();
+    private Set<Cliente> clientes = new HashSet<>();
+
     @OneToMany(mappedBy = "servicio")
     @Setter(AccessLevel.NONE)
     private Set<Incidente> incidentes = new HashSet<>();
+
+    public Servicio(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
     public void addCliente(Cliente cliente){
         cliente.addServicio(this);
     }
