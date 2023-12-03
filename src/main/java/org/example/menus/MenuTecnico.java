@@ -1,5 +1,8 @@
 package org.example.menus;
 
+import org.example.controllers.TecnicoController;
+import org.example.models.Tecnico;
+
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
@@ -43,11 +46,15 @@ public final class MenuTecnico {
     public void crearTecnico(){
  Scanner sc = new Scanner(System.in);
  String nombre= "";
- System.out.print("Ingrese el nombre del técnico:");
- nombre= sc.nextLine();
+ System.out.print("Ingrese el nombre del técnico: ");
+        nombre= sc.nextLine();
  String apellido = "";
-        System.out.println("Ingrese el apellido del técnico:");
 
+        System.out.print("Ingrese el apellido del técnico: ");
+        apellido= sc.nextLine();
+        Tecnico tecnico = new Tecnico(nombre,apellido);
+        TecnicoController tecnicoController = new TecnicoController();
+        tecnicoController.create(tecnico);
 
 
     }

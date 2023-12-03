@@ -1,4 +1,5 @@
 package org.example;
+import org.example.menus.MenuPrincipal;
 import org.example.seeders.PrincipalSeeder;
 
 
@@ -6,6 +7,7 @@ public class App {
     public static void main(String[] args) {
 
   PrincipalSeeder principalSeeder = new PrincipalSeeder();
+        MenuPrincipal menuPrincipal= new MenuPrincipal();
        /*ClienteService clienteService = new ClienteService();
         Cliente cliente = new Cliente("jorge","as");
         cliente.setCuit("44435444");

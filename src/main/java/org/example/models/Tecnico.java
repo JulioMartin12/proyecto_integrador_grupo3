@@ -44,7 +44,7 @@ public class Tecnico implements Serializable {
     @Setter(AccessLevel.NONE)
     private Set<Incidente> incidentes = new HashSet<>();
 
-    public void addEstimacion(TecnicoEstimacion estimacion){
+   public void addEstimacion(TecnicoEstimacion estimacion){
         estimaciones.add(estimacion);
         estimacion.getTipoProblema().getEstimaciones().add(estimacion);
     }
