@@ -14,10 +14,13 @@ public class Cliente implements Serializable {
     @Id @EqualsAndHashCode.Include
     @Column(name = "cuit", length = 11)
     private String cuit;
+
     @Column(name = "razon_social", nullable = false, length = 45)
     private String razonSocial;
+
     @Column(name = "email", length = 320) // una direccion email puede llegar a tener 320 caracteres
     private String email;
+
     @ManyToMany
     @JoinTable(
             name = "SERVICIOS_CLIENTES",
@@ -25,9 +28,17 @@ public class Cliente implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_servicio",foreignKey=@ForeignKey(name = "id_servicio_servicios_clientes")))
     @Setter(AccessLevel.NONE)
     private Set<Servicio> servicios = new HashSet<>();
+
     @OneToMany(mappedBy = "cliente")
     @Setter(AccessLevel.NONE)
     private Set<Incidente> incidentes = new HashSet<>();
+
+    public Cliente(String cuit, String razonSocial, String email) {
+        this.cuit = cuit;
+        this.razonSocial = razonSocial;
+        this.email = email;
+    }
+
     public void addServicio(Servicio servicio){
         servicios.add(servicio);
         servicio.getClientes().add(this);

@@ -5,6 +5,7 @@ public class PrincipalSeeder {
     public PrincipalSeeder() {
         TecnicoSeeder tecnicoSeeder = new TecnicoSeeder();
         ServiciosSeeder serviciosSeeder = new ServiciosSeeder();
+        ClienteSeeder clienteSeeder = new ClienteSeeder();
 
     }
 }

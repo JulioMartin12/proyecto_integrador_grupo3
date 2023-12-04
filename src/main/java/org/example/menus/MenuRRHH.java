@@ -21,7 +21,7 @@ public final class MenuRRHH {
             switch (opcion){
                 case 1: MenuTecnico menuTecnico = new MenuTecnico();
                     break;
-                case 2:
+                case 2: MenuCliente menuCliente = new MenuCliente();
                     break;
                 case 0:
                     System.out.println("Usted a salido del menú de RRHH.");
