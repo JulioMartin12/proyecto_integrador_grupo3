@@ -42,6 +42,7 @@ public class Tecnico implements Serializable {
 
     @OneToMany(mappedBy = "tecnico")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     private Set<Incidente> incidentes = new HashSet<>();
 
    public void addEstimacion(TecnicoEstimacion estimacion){

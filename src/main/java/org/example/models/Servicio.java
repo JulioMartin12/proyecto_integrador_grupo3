@@ -29,6 +29,7 @@ public class Servicio implements Serializable {
 
     @OneToMany(mappedBy = "servicio")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     private Set<Incidente> incidentes = new HashSet<>();
 
     public Servicio(String nombre, String descripcion) {

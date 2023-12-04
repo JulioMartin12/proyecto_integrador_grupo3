@@ -29,9 +29,11 @@ public class TipoProblema implements Serializable {
     private Set<Especialidad> especialidades = new HashSet<>();
     @OneToMany(mappedBy = "tipoProblema")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     private Set<TecnicoEstimacion> estimaciones = new HashSet<>();
     @OneToMany(mappedBy = "tipoProblema")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     private Set<Problema> problemas = new HashSet<>();
     public void addEspecialidad(Especialidad especialidad){
         especialidades.add(especialidad);

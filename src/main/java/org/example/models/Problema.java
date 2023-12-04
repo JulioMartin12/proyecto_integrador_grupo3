@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name="PROBLEMAS")
@@ -21,7 +21,8 @@ public class Problema implements Serializable {
     @Column(nullable = false)
     private int horas_extra = 0;
     @ManyToOne
-    @JoinColumn(name = "id_incidente", nullable = false, foreignKey = @ForeignKey(name = "id_incidente_problemas"))
+    @JoinColumn(name = "id_incidente", foreignKey = @ForeignKey(name = "id_incidente_problemas"))
+    @ToString.Exclude
     private Incidente incidente;
     @ManyToOne
     @JoinColumn(name = "id_tipo_problema", nullable = false, foreignKey = @ForeignKey(name = "id_tipo_problema_problemas"))

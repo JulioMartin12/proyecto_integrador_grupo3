@@ -20,9 +20,11 @@ public class Especialidad implements Serializable {
     private String descripcion;
     @ManyToMany(mappedBy = "especialidades")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     Set<Tecnico> tecnicos = new HashSet<>();
     @ManyToMany(mappedBy = "especialidades")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     Set<TipoProblema> tiposProblemas = new HashSet<>();
     public void addTipoProblema(TipoProblema tipoProblema){
         tiposProblemas.add(tipoProblema);

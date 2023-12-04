@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity @Table(name = "CLIENTES")
 public class Cliente implements Serializable {
@@ -31,6 +31,7 @@ public class Cliente implements Serializable {
 
     @OneToMany(mappedBy = "cliente")
     @Setter(AccessLevel.NONE)
+    @ToString.Exclude
     private Set<Incidente> incidentes = new HashSet<>();
 
     public Cliente(String cuit, String razonSocial, String email) {
